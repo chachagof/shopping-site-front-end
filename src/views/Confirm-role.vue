@@ -1,5 +1,5 @@
 <template>
-  <div class="confirm-role mt-5">
+  <div class="confirm-role">
     <RouterLink to="/buyer/signin">
       <div class="btn btn-primary me-5">Buyer</div>
     </RouterLink>

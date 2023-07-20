@@ -6,10 +6,10 @@ import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faPhone)
+library.add(faCartShopping, faRightFromBracket)
 
 const app = createApp(App)
 
