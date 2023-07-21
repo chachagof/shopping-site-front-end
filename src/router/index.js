@@ -5,6 +5,7 @@ import SignUp from '../views/Sign-up.vue'
 import ConfirmRole from '../views/Confirm-role.vue'
 import Cart from '../views/Cart-page.vue'
 import Shop from '../views/Shop-page.vue'
+import NotFound from '../views/Not-found.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,10 @@ const router = createRouter({
       path: '/shop',
       name: 'shop',
       component: Shop
+    },
+    {
+      path: '/:catchAll(.*)',
+      component: NotFound
     }
   ]
 })
