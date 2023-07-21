@@ -4,6 +4,7 @@ import SignIn from '../views/Sign-In.vue'
 import SignUp from '../views/Sign-up.vue'
 import ConfirmRole from '../views/Confirm-role.vue'
 import Cart from '../views/Cart-page.vue'
+import Shop from '../views/Shop-page.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/cart',
       name: 'cart',
       component: Cart
+    },
+    {
+      path: '/shop',
+      name: 'shop',
+      component: Shop
     }
   ]
 })
