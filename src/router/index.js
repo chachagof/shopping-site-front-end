@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home-page.vue'
 import BuyerSignin from '../views/Buyer-signin.vue'
+import BuyerSignup from '../views/Buyer-signup.vue'
 import SellerSignIn from '../views/Seller-signin.vue'
-// import SignUp from '../views/Sign-up.vue'
+import SellerSignup from '../views/Seller-signup.vue'
 import ConfirmRole from '../views/Confirm-role.vue'
 import Cart from '../views/Cart-page.vue'
 import Shop from '../views/Shop-page.vue'
@@ -22,15 +23,20 @@ const router = createRouter({
       component: BuyerSignin
     },
     {
+      path: '/buyer/signup',
+      name: 'buyer-signup',
+      component: BuyerSignup
+    },
+    {
       path: '/seller/signin',
       name: 'seller-signin',
       component: SellerSignIn
     },
-    // {
-    //   path: '/signup',
-    //   name: 'sign-up',
-    //   component: SignUp
-    // },
+    {
+      path: '/seller/signup',
+      name: 'seller-signup',
+      component: SellerSignup
+    },
     {
       path: '/ConfirmRole',
       name: 'Confirm-role',
