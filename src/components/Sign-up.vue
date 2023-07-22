@@ -24,6 +24,7 @@ const handleSubmit = () => {
   <div class="signup col-5 ">
     <div class="mb-4 text-center">
       <h1 v-if="role[0].role === 'buyer'" class="h3 font-weight-normal mb-3">Buyer Sign Up</h1>
+      <h1 v-if="role[0].role === 'seller'" class="h3 font-weight-normal mb-3">Seller Sign Up</h1>
     </div>
     <form @submit.prevent="handleSubmit" class="form-signup">
       <div class="form-row mb-3">
@@ -47,6 +48,11 @@ const handleSubmit = () => {
     </form>
     <div class="mb-4 text-center">
       <p v-if="role[0].role === 'buyer'">
+        <router-link to="/buyer/signup">
+          Sign In
+        </router-link>
+      </p>
+      <p v-if="role[0].role === 'seller'">
         <router-link to="/buyer/signup">
           Sign In
         </router-link>
