@@ -34,7 +34,7 @@ const handleSubmit = () => {
         <input v-model="password" class="form-control" id="password" type="password" name="password"
           placeholder="Password" required>
       </div>
-      <button class="btn btn-primary btn-block" type="submit">Submit</button>
+      <button class="btn btn-primary btn-block" type="submit" >Submit</button>
     </form>
     <div class="mb-4 text-center">
       <p v-if="role[0].role === 'buyer'">
