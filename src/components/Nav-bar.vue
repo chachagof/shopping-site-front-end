@@ -9,6 +9,8 @@ const lowPrice = ref('')
 const highPrice = ref('')
 const searchOption = ref('')
 const emit = defineEmits(['search-submitted'])
+const { showHomePage } = defineProps(['showHomePpage'])
+const showComponent = showHomePage !== undefined
 
 const handleSubmit = () => {
   // 加入資料
@@ -41,7 +43,7 @@ const handleSubmit = () => {
       <RouterLink to="/" class="navbar-brand">Shopping site</RouterLink>
     </div>
     <!-- searchbar -->
-    <div class="searchbar-container col-6">
+    <div v-if="showComponent" class="searchbar-container col-6">
       <div class="searchbar">
         <form @submit.prevent="handleSubmit" class="d-flex">
           <input v-model="searchOption" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
