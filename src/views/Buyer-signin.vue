@@ -18,10 +18,10 @@ async function buyerData (data) {
       return
     }
     const res = await authorizationAPI.buyerSignin(data)
-    if (res.data.status !== '200') {
+    if (res.data.status !== 200) {
       throw new Error(res.data.message)
     }
-    localStorage.setItem('token', data.token)
+    localStorage.setItem('token', res.data.token)
     router.push('/')
   } catch (err) {
     Toast.fire({
