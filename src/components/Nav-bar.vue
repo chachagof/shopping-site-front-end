@@ -8,8 +8,10 @@ const price = ref('')
 const lowPrice = ref('')
 const highPrice = ref('')
 const searchOption = ref('')
+const emit = defineEmits(['search-submitted'])
 
 const handleSubmit = () => {
+  // 加入資料
   const searchData = {
     commodity: commodity.value,
     shop: shop.value,
@@ -19,8 +21,17 @@ const handleSubmit = () => {
     highPrice: highPrice.value,
     searchOption: searchOption.value
   }
-  console.log(searchData)
+  emit('search-submitted', searchData)
+  // 清空資料
+  commodity.value = ''
+  shop.value = ''
+  category.value = ''
+  price.value = ''
+  lowPrice.value = ''
+  highPrice.value = ''
+  searchOption.value = ''
 }
+
 </script>
 
 <template>

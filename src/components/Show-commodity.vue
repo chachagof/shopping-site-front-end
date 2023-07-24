@@ -44,7 +44,7 @@ const addToCart = (commodityId) => {
         </p>
       </div>
       <div class="card-body">
-        <img src="https://fakeimg.pl/200x200/">
+        <img :src="modalData[0].avatar">
         <p class="card-text mt-5">商品描述:{{ modalData[0].description }}</p>
         <p class="card-text mb-5">商品價格:{{ modalData[0].price }}</p>
       </div>
