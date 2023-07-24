@@ -14,8 +14,6 @@ const getCommodityData = async (data) => {
       if (data.shop)condition.seller = data.searchOption
       if (data.price)condition.price = `${data.lowPrice},${data.highPrice}`
     }
-    console.log(data)
-    console.log(condition)
     const res = await commoditiesAPI.getCommodities(condition)
     commodityData.value = res.data.data
   } catch (err) {

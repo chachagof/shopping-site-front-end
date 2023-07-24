@@ -10,7 +10,6 @@ const router = useRouter()
 
 async function sellerData (data) {
   try {
-    console.log(data)
     if (!data.account || !data.password) {
       Toast.fire({
         icon: 'warning',
@@ -19,11 +18,9 @@ async function sellerData (data) {
       return
     }
     const res = await authorizationAPI.sellerSignin(data)
-    console.log(res)
     if (res.data.status !== 200) {
       throw new Error(res.data.message)
     }
-    console.log('hi')
     localStorage.setItem('token', res.data.token)
     router.push('/')
   } catch (err) {
