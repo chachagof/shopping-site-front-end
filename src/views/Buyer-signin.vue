@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import SignIn from '../components/Sign-In.vue'
+import Navbar from '../components/Nav-bar.vue'
 import authorizationAPI from './../apis/authorization'
 import { useRouter } from 'vue-router'
 import { Toast } from './../utils/helpers'
@@ -34,5 +35,8 @@ async function buyerData (data) {
 </script>
 
 <template>
-  <SignIn :role="roleData" @form-submitted="buyerData"/>
+  <Navbar @search-submitted="getCommodityData"/>
+  <main role="main" class="mt-5 bg-white d-flex flex-column justify-content-center align-items-center">
+    <SignIn :role="roleData" @form-submitted="buyerData"/>
+  </main>
 </template>
