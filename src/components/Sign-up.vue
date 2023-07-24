@@ -48,12 +48,12 @@ const handleSubmit = () => {
     </form>
     <div class="mb-4 text-center">
       <p v-if="role[0].role === 'buyer'">
-        <router-link to="/buyer/signup">
+        <router-link to="/buyer/signin">
           Sign In
         </router-link>
       </p>
       <p v-if="role[0].role === 'seller'">
-        <router-link to="/buyer/signup">
+        <router-link to="/seller/signin">
           Sign In
         </router-link>
       </p>
