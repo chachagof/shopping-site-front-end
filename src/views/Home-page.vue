@@ -26,10 +26,7 @@ getCommodityData()
 
 <template>
   <Navbar @search-submitted="getCommodityData"/>
-    <main
-      role="main"
-      class="mt-5 bg-white d-flex flex-column justify-content-center align-items-center"
-    >
+  <main role="main" class="mt-5 bg-white d-flex flex-column justify-content-center align-items-center">
     <Commodity :commoditiesData="commodityData"/>
-    </main>
+  </main>
 </template>
