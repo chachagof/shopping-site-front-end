@@ -5,8 +5,10 @@ import Navbar from '../components/Nav-bar.vue'
 import authorizationAPI from './../apis/authorization'
 import { useRouter } from 'vue-router'
 import { Toast } from './../utils/helpers'
+import { useAuthStore } from './../stores/auth'
 
 const roleData = ref([{ role: 'seller' }])
+const { login } = useAuthStore()
 const router = useRouter()
 
 async function sellerData (data) {
@@ -23,6 +25,7 @@ async function sellerData (data) {
       throw new Error(res.data.message)
     }
     localStorage.setItem('token', res.data.token)
+    login(res.data.user)
     router.push('/')
   } catch (err) {
     Toast.fire({
