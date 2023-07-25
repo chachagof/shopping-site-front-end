@@ -1,10 +1,14 @@
 <script setup>
 import { ref } from 'vue'
+import cartAPI from './../apis/cart'
+import { useAuthStore } from './../stores/auth'
+import { Toast } from './../utils/helpers'
 
 defineProps(['commoditiesData'])
 
 const isModalVisible = ref(false)
 const modalData = ref(null)
+const { currentUser, isAuthenticated } = useAuthStore()
 
 const showModal = (commodity) => {
   if (!isModalVisible.value) {
@@ -15,10 +19,33 @@ const showModal = (commodity) => {
   }
 }
 
-const addToCart = (commodityId) => {
-  console.log('add', commodityId)
-  // add to cart
-  // cart id
+const addToCart = async (commodityId) => {
+  try {
+    if (!isAuthenticated) {
+      Toast.fire({
+        icon: 'warning',
+        title: '請先登入才能使用'
+      })
+      return
+    }
+    if (currentUser.role === 'seller') {
+      Toast.fire({
+        icon: 'warning',
+        title: '僅供買家使用'
+      })
+      return
+    }
+    const res = await cartAPI.addToCart(commodityId)
+    if (res.data.status !== 200) {
+      throw new Error(res.data.message)
+    }
+    Toast.fire({
+      icon: 'success',
+      title: '已加入您的購物車'
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
 </script>
 
