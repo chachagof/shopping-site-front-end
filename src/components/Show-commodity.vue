@@ -3,12 +3,14 @@ import { ref } from 'vue'
 import cartAPI from './../apis/cart'
 import { useAuthStore } from './../stores/auth'
 import { Toast } from './../utils/helpers'
+import { cartStore } from './../stores/cart'
 
 defineProps(['commoditiesData'])
 
 const isModalVisible = ref(false)
 const modalData = ref(null)
 const { currentUser, isAuthenticated } = useAuthStore()
+const { getUserCart } = cartStore()
 
 const showModal = (commodity) => {
   if (!isModalVisible.value) {
@@ -43,6 +45,8 @@ const addToCart = async (commodityId) => {
       icon: 'success',
       title: '已加入您的購物車'
     })
+    const cart = await cartAPI.getCart()
+    await getUserCart(cart.data.data)
   } catch (err) {
     console.log(err)
   }

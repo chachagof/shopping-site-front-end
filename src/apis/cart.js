@@ -11,5 +11,10 @@ export default {
     return apiHelper.post(`/cart/${commodityId}`, null, {
       headers: { Authorization: `Bearer ${getToken()}` }
     })
+  },
+  checkCart (updateData) {
+    return apiHelper.put('/cart', updateData, {
+      headers: { Authorization: `Bearer ${getToken()}` }
+    })
   }
 }
