@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useAuthStore } from './../stores/auth'
+import Swal from 'sweetalert2'
+import router from '../router'
 
 const commodity = ref('')
 const shop = ref('')
@@ -9,8 +12,9 @@ const lowPrice = ref('')
 const highPrice = ref('')
 const searchOption = ref('')
 const emit = defineEmits(['search-submitted'])
-const { showHomePage } = defineProps(['showHomePpage'])
+const { showHomePage } = defineProps(['showHomePage'])
 const showComponent = showHomePage !== undefined
+const { currentUser, isAuthenticated, logout } = useAuthStore()
 
 const handleSubmit = () => {
   // 加入資料
@@ -32,6 +36,20 @@ const handleSubmit = () => {
   lowPrice.value = ''
   highPrice.value = ''
   searchOption.value = ''
+}
+
+const userLogout = async () => {
+  const alert = await Swal.fire({
+    icon: 'warning',
+    title: '確認登出?',
+    confirmButtonText: '確定',
+    showCancelButton: true
+  })
+  if (alert.isConfirmed) {
+    logout()
+    router.go()
+    router.push('/')
+  }
 }
 
 </script>
@@ -85,13 +103,16 @@ const handleSubmit = () => {
     </div>
     <!-- button -->
     <div class="buttons-container">
-      <router-link to="/cart" class="btn btn-outline-warning me-3">
+      <router-link v-if="currentUser.role === 'buyer'" to="/cart" class="btn btn-outline-warning me-3">
           Cart<font-awesome-icon icon="cart-shopping" />
       </router-link>
-      <button type="button" class="btn btn-outline-success">
+      <router-link v-if="currentUser.role === 'seller'" :to="'/seller/'+currentUser.id" class="btn btn-outline-warning me-3">
+          shop<font-awesome-icon icon="cart-shopping" />
+      </router-link>
+      <router-link  v-if="!isAuthenticated" to="/confirmRole" class="btn btn-outline-success">
         Login<font-awesome-icon icon="right-to-bracket" />
-      </button>
-      <button type="button" class="btn btn-outline-danger">
+      </router-link>
+      <button v-if="isAuthenticated" @click="userLogout" type="button" class="btn btn-outline-danger">
         Logout<font-awesome-icon icon="right-from-bracket" />
       </button>
     </div>

@@ -13,6 +13,9 @@ export const useAuthStore = defineStore('auth', {
       this.isAuthenticated = true
     },
     logout () {
+      this.currentUser = {}
+      this.isAuthenticated = false
+      localStorage.removeItem('token')
     }
   },
   persist: {

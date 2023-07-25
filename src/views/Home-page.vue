@@ -6,7 +6,7 @@ import commoditiesAPI from '../apis/commodities'
 import { Toast } from '../utils/helpers'
 
 const commodityData = ref([])
-const showHomePpage = ref(true)
+const showHomePage = ref(true)
 const getCommodityData = async (data) => {
   try {
     const condition = {}
@@ -34,7 +34,7 @@ getCommodityData()
 </script>
 
 <template>
-  <Navbar @search-submitted="getCommodityData"  :showHomePpage="showHomePpage"/>
+  <Navbar @search-submitted="getCommodityData"  :showHomePage="showHomePage"/>
   <main role="main" class="mt-5 bg-white d-flex flex-column justify-content-center align-items-center">
     <Commodity :commoditiesData="commodityData"/>
   </main>

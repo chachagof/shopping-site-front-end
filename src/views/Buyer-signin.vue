@@ -26,6 +26,10 @@ async function buyerData (data) {
     }
     localStorage.setItem('token', res.data.token)
     login(res.data.user)
+    Toast.fire({
+      icon: 'success',
+      title: '登入成功'
+    })
     router.push('/')
   } catch (err) {
     Toast.fire({
