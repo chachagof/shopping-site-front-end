@@ -7,5 +7,10 @@ export default {
     return apiHelper.get(`/commodities?${searchParams.toString()}`, {
       headers: { Authorization: `Bearer ${getToken()}` }
     })
+  },
+  editCommodity (commodityId, data) {
+    return apiHelper.put(`/commodity/${commodityId}`, data, {
+      headers: { Authorization: `Bearer ${getToken()}` }
+    })
   }
 }

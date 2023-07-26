@@ -106,7 +106,7 @@ const userLogout = async () => {
       <router-link v-if="currentUser.role === 'buyer'" to="/cart" class="btn btn-outline-warning me-3">
           Cart<font-awesome-icon icon="cart-shopping" />
       </router-link>
-      <router-link v-if="currentUser.role === 'seller'" :to="'/seller/'+currentUser.id" class="btn btn-outline-warning me-3">
+      <router-link v-if="currentUser.role === 'seller'" :to="'/shop/'+ currentUser.id" class="btn btn-outline-warning me-3">
           shop<font-awesome-icon icon="cart-shopping" />
       </router-link>
       <router-link  v-if="!isAuthenticated" to="/confirmRole" class="btn btn-outline-success">

@@ -25,7 +25,7 @@ getShopData()
 </script>
 
 <template>
-  <Navbar @search-submitted="getCommodityData"/>
+  <Navbar />
     <main
       role="main"
       class="mt-5 bg-white d-flex flex-column justify-content-center align-items-center"
