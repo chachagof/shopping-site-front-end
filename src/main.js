@@ -6,11 +6,11 @@ import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCartShopping, faCartPlus, faRightFromBracket, faCircleInfo, faCirclePlus, faCircleMinus, faCashRegister, faHouse, faBackward, faRightToBracket, faSquarePlus, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faCartPlus, faRightFromBracket, faCircleInfo, faCirclePlus, faCircleMinus, faCashRegister, faHouse, faBackward, faRightToBracket, faSquarePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import persist from 'pinia-plugin-persist'
 
-library.add(faCartShopping, faCartPlus, faRightFromBracket, faCircleInfo, faCirclePlus, faCircleMinus, faCashRegister, faHouse, faBackward, faRightToBracket, faSquarePlus, faPenToSquare)
+library.add(faCartShopping, faCartPlus, faRightFromBracket, faCircleInfo, faCirclePlus, faCircleMinus, faCashRegister, faHouse, faBackward, faRightToBracket, faSquarePlus, faPenToSquare, faTrashCan)
 
 const app = createApp(App)
 const pinia = createPinia()

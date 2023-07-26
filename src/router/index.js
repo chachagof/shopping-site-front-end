@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
 import Home from '../views/Home-page.vue'
 import BuyerSignin from '../views/Buyer-signin.vue'
 import BuyerSignup from '../views/Buyer-signup.vue'
@@ -46,23 +47,39 @@ const router = createRouter({
     {
       path: '/cart',
       name: 'cart',
-      component: Cart
+      component: Cart,
+      meta: { requiresAuth: true }
     },
     {
       path: '/shop/:sellerId',
       name: 'shop',
-      component: Shop
+      component: Shop,
+      meta: { requiresAuth: true }
     },
     {
       path: '/create',
       name: 'create',
-      component: Create
+      component: Create,
+      meta: { requiresAuth: true }
     },
     {
       path: '/:catchAll(.*)',
       component: NotFound
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const isLoggedIn = useAuthStore().isAuthenticated
+    if (isLoggedIn) {
+      next()
+    } else {
+      next('/ConfirmRole')
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

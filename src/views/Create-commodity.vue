@@ -38,6 +38,7 @@ const createCommodity = async () => {
     categoryId: categoryId.value,
     description: description.value
   }
+  console.log(createData)
   const res = await commodityAPI.createCommodity(createData)
   if (res) {
     router.go(-1)

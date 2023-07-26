@@ -6,6 +6,7 @@ import commodityAPI from './../apis/commodities'
 import { useAuthStore } from './../stores/auth'
 import { Toast } from './../utils/helpers'
 import { cartStore } from './../stores/cart'
+import Swal from 'sweetalert2'
 
 defineProps(['commoditiesData'])
 
@@ -113,15 +114,37 @@ const editCommodity = async (commodityId) => {
     console.log(err)
   }
 }
+
+const removeCommodity = async (data) => {
+  const alert = await Swal.fire({
+    icon: 'warning',
+    title: '確認刪除此商品?',
+    confirmButtonText: '確定',
+    showCancelButton: true
+  })
+  if (alert.isConfirmed) {
+    const res = await commodityAPI.removeCommodity(data)
+    if (res) {
+      Toast.fire({
+        icon: 'success',
+        title: '刪除商品成功，請重新整理網頁'
+      })
+    }
+  }
+}
 </script>
 
 <template>
   <div class="commodity-container col-10 d-flex flex-wrap justify-content-center">
     <!-- each commodity -->
     <div class="card col-2 m-3" v-for="commodity in commoditiesData" :key="commodity.id">
+      <div class="card-header d-flex justify-content-between">
+        <h5>{{commodity.name}}</h5>
+        <button v-if="(currentUser.role === 'seller' && commodity.sellerId === currentUser.id)" @click="removeCommodity(commodity.id)"  class="btn btn-danger"><font-awesome-icon icon="trash-can" size="xs" /></button>
+      </div>
       <img :src="commodity.avatar" class="card-img-top">
       <div class="card-body">
-        <h5 class="card-title">{{commodity.name}}</h5>
+        <!-- <h5 class="card-title">{{commodity.name}}</h5> -->
         <div class="button-container d-flex justify-content-between">
           <button @click="showModal(commodity)" class="btn btn-outline-success"><font-awesome-icon icon="circle-info" /></button>
           <button v-if="currentUser.role === 'buyer'"  @click="addToCart(commodity.id)" class="btn btn-outline-warning"><font-awesome-icon icon="cart-plus" /></button>

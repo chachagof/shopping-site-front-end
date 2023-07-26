@@ -17,5 +17,10 @@ export default {
     return apiHelper.post('/commodity/', data, {
       headers: { Authorization: `Bearer ${getToken()}` }
     })
+  },
+  removeCommodity (commodityId) {
+    return apiHelper.delete(`/commodity/${commodityId}`, {
+      headers: { Authorization: `Bearer ${getToken()}` }
+    })
   }
 }
