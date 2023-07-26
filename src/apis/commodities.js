@@ -12,5 +12,10 @@ export default {
     return apiHelper.put(`/commodity/${commodityId}`, data, {
       headers: { Authorization: `Bearer ${getToken()}` }
     })
+  },
+  createCommodity (data) {
+    return apiHelper.post('/commodity/', data, {
+      headers: { Authorization: `Bearer ${getToken()}` }
+    })
   }
 }

@@ -8,7 +8,7 @@ import ConfirmRole from '../views/Confirm-role.vue'
 import Cart from '../views/Cart-page.vue'
 import Shop from '../views/Shop-page.vue'
 import NotFound from '../views/Not-found.vue'
-import Create from '../components/Create-commodity.vue'
+import Create from '..//views/Create-commodity.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,7 +54,8 @@ const router = createRouter({
       component: Shop
     },
     {
-      path: '/test',
+      path: '/create',
+      name: 'create',
       component: Create
     },
     {

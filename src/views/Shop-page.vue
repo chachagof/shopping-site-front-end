@@ -30,23 +30,29 @@ getShopData()
       role="main"
       class="mt-5 bg-white d-flex flex-column justify-content-center align-items-center"
     >
-    <div class="shop-container border rounded col-10  p-5 mb-3">
-    <div class="shop-profile d-flex">
-      <div class="shop-avatar-container d-flex justify-content-center align-items-center col-3 ">
-        <img :src="seller.avatar" class="img-fluid img-thumbnail shop-avatar">
+      <div class="shop-container border rounded col-10  p-5 mb-3">
+        <div class="shop-profile d-flex">
+          <div class="shop-avatar-container d-flex justify-content-center align-items-center col-3 ">
+            <img :src="seller.avatar" class="img-fluid img-thumbnail shop-avatar">
+          </div>
+          <div class="shop-description d-flex align-items-center col-9">
+            <p>{{seller.description}}</p>
+          </div>
+        </div>
+        <div class="shop-commodities"></div>
       </div>
-      <div class="shop-description d-flex align-items-center col-9">
-        <p>{{seller.description}}</p>
-      </div>
-    </div>
-    <div class="shop-commodities"></div>
-  </div>
-  <Commodity :commoditiesData="shopData" />
+      <Commodity :commoditiesData="shopData" />
+      <router-link to="/create" class="btn btn-success create-btn">Create <font-awesome-icon icon="circle-plus" /></router-link>
     </main>
 </template>
 
 <style scoped>
 .shop-avatar {
   max-width: 250px;
+}
+.create-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 </style>
